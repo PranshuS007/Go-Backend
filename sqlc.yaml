@@ -1,0 +1,38 @@
+version: "2" 
+
+cloud:
+    organization: ""
+    project: ""
+    hostname: ""
+
+servers: []
+  
+sql:
+  - engine: "postgresql" 
+    schema:
+      - "./db/migration/" 
+    queries:
+      - "./db/query/" 
+    gen:
+      go:
+        package: "db" 
+        out: "sqlc" 
+        emit_empty_slices: true
+        emit_json_tags: true 
+        json_tags_case_style: "snake" 
+        emit_prepared_queries: false 
+        emit_interface: false
+
+# overrides:
+#   - go_type:
+#       type: "uuid.UUID"
+#       db_type: "uuid"
+#   - go_type:
+#       type: "decimal.Decimal"
+#       db_type: "numeric"
+
+plugins: []
+
+rules: []
+
+options: {}
